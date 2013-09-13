@@ -23,7 +23,7 @@ $registrantResult = mysql_query($registrantDisplay);
 
 echo "<table border='1' cellpadding='7' style='padding: 7px; text-align: center;'><tr><td colspan='10'><B>CURRENT SIGN UPS</b></td></tr>";
 
-echo "<tr><th style='text-align: left;'>Time</th><th>Name</th><th>Email</th><th>Phone</th><th>Industry</th><th>Learn</th><th>Office 1</th><th>Office 2</th><th>Office 3</th></tr>";
+echo "<tr><th style='text-align: left;'>Time</th><th>Name</th><th>Email</th><th>Industry</th><th>Learn</th><th>Office 1</th><th>Office 2</th><th>Office 3</th></tr>";
 
 
 while ($registrantRow = mysql_fetch_array($registrantResult)){
@@ -62,7 +62,7 @@ while ($registrantRow = mysql_fetch_array($registrantResult)){
 			}
 			
 			// DISPLAY EMAIL AND PHONE
-			echo "</td><td>".$registrantRow['email']."</td><td>".$registrantRow['phone']."</td><td>".$registrantRow['industry']."</td><td>".$registrantRow['learn']."</td><td>".$registrantRow['choice1']."</td><td>".$registrantRow['choice2']."</td><td>".$registrantRow['choice3']."</td></tr>";
+			echo "</td><td>".$registrantRow['email']."</td><td>".$registrantRow['industry']."</td><td>".$registrantRow['learn']."</td><td>".$registrantRow['choice1']."</td><td>".$registrantRow['choice2']."</td><td>".$registrantRow['choice3']."</td></tr>";
 
 			
 

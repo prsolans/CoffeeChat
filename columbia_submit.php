@@ -1,19 +1,5 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-	$host = "egv-vmjmladb01";
-	$user = "root";
-	$pass = "splhcb!@11";
-	$database = "__global";
-	
-    $con=mysql_connect($host,$user,$pass);
-	if ($con)
-	{
-		mysql_select_db($database);
-	}
-	else
-	{
-		echo("Connection failed!");
-	}
-
+include('connect.php');
 
 $school = "2";
 
@@ -27,10 +13,10 @@ $lastName = $_GET["last_name"];
 $email = $_GET["email"];
 $phone = $_GET["phone"];
 
-/*$choice1 = $_GET["1st_choice"];
+$choice1 = $_GET["1st_choice"];
 $choice2 = $_GET["2nd_choice"];
 $choice3 = $_GET["3rd_choice"];
-*/
+
 $industry = $_GET["industry"];
 $learn = $_GET["learn"];
 
@@ -52,7 +38,7 @@ $learn = $_GET["learn"];
 /*	$choice1 = mysql_real_escape_string($choice1);
 	$choice2 = mysql_real_escape_string($choice2);
 	$choice3 = mysql_real_escape_string($choice3);
-*/	
+	*/
 	$industry = mysql_real_escape_string($industry);
 	$learn = mysql_real_escape_string($learn);
 
@@ -60,7 +46,7 @@ $learn = $_GET["learn"];
 // ADD NEW STUDENT TO SCHOOL AT SPECIFIC DATE/TIME	
 
 	$theseRegistrants = "x_rec_" . $school . "_registrants";	
-	$addStudent = "INSERT INTO `__global`.`".$theseRegistrants."` (dateID, timeID, firstName, lastName, email, phone, industry, learn) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '".$phone."', '".$industry."', '".$learn."');";		
+	$addStudent = "INSERT INTO `__global`.`".$theseRegistrants."` (dateID, timeID, firstName, lastName, email, phone, industry, learn, choice1, choice2, choice3) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '".$phone."', '".$industry."', '".$learn."', '".$choice1."', '".$choice2."', '".$choice3."');";		
 	//echo $addStudent;		
 	mysql_query($addStudent);
 				
@@ -90,8 +76,9 @@ while($timesRow = mysql_fetch_array($timesResult)){
 	$confirmedTime = $timesRow['slot_time'];
 }
 
-
-$to      = 'Danielle.Limbal@atkearney.com';
+// SENDS EMAIL TO SCHOOL CONTACT
+// EDIT TO, SUBJECT, MESSAGE 
+$to      = 'Catherine.Ransone@atkearney.com, Katrin.Korban@atkearney.com';
 $subject = 'Columbia School of Business Coffee Chat Registration';
 $message = '<html><h2>Registration Form: Columbia Business School First Year MBA Coffee Chats for 2013</h2><br/>';
 
@@ -106,8 +93,8 @@ $message .= " " .$lastName. "<br/>";
 
 $message .= $confirmedDate." ".$confirmedTime;
 $message .= '<br/><a href="mailto:'.$email.'">'.$email.'</a> | '.$phone.'<br/>';
-//$message .= '<br/><strong>Office Preferences</strong><br/>';
-//$message .= $choice1.', '.$choice2.', '.$choice3.'<br/>';
+$message .= '<br/><strong>Office Preferences</strong><br/>';
+$message .= $choice1.', '.$choice2.', '.$choice3.'<br/>';
 $message .= '<br/><strong>What industry did you work in prior to MBA?</strong><br/>';
 $message .= $industry;
 $message .= '<br/><strong>What would you like to learn about A.T. Kearney?</strong><br/>';
@@ -122,11 +109,11 @@ $headers = 'From: ColumbiaMBA1Recruting@atkearney.com' . "\r\n" .
 	// To send HTML mail, the Content-type header must be set
 $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$headers .= "\r\nBcc: paul.solans@atkearney.com\r\n\r\n";
+//$headers .= "\r\nBcc: javier.valdivia@atkearney.com\r\n\r\n";
 
 $status = mail($to, $subject, $message, $headers);
 
-//echo "status: ".$status;
+echo "status: ".$status;
 
 
 ?>
@@ -137,5 +124,5 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 {
 font: 12px/1.5 Arial, Helvetica, Verdana, sans-serif;}
 </style>
-<p>
-Thank you for submitting your coffee chat request.  You are currently scheduled to meet at <?php	 	 		 		 	 	 		 		 		 		 		 	 echo $confirmedTime;?> on <?php	 	 		 		 	 	 		 		 		 		 		 	 echo $confirmedDate;?>.  We look forward to meeting with you.</p><p>If you need to change your time slot or have any other questions or concerns, please contact <a href="mailto:Danielle.Limbal@atkearney.com?subject=Columbia Coffee Chats">Danielle Limbal</a></b>.</p></div>
+<p><?php //echo $status; ?>
+Thank you for submitting your coffee chat request.  You are currently scheduled to meet at <?php	 	 		 		 	 	 		 		 		 		 		 	 echo $confirmedTime;?> on <?php	 	 		 		 	 	 		 		 		 		 		 	 echo $confirmedDate;?>.  We look forward to meeting with you.</p><p>If you need to change your time slot or have any other questions or concerns, please contact <a href="mailto:Catherine.Ransone@atkearney.com?subject=Columbia Coffee Chats">Catherine Ransone</a></b>.</p></div>

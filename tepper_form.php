@@ -1,18 +1,6 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-	$host = "localhost";
-	$user = "root";
-	$pass = "Joomla";
-	$database = "joomla";
-	
-    $con=mysql_connect($host,$user,$pass);
-	if ($con)
-	{
-		mysql_select_db($database);
-	}
-	else
-	{
-		echo("Connection failed!");
-	}
+include('connect.php');
+
 ?>
 <style type="text/css">
 <!--

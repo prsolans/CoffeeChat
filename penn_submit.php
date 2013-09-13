@@ -15,9 +15,9 @@
 		echo("Connection failed!");
 	}
 
-$school = "13";
+$location = "13";
 
-$dateID = 182;
+$dateID = 197;
 $timeID = $_GET["time"];
 
 $firstName = $_GET["first_name"];
@@ -31,10 +31,9 @@ $choice1 = $_GET["1st_choice"];
 $choice2 = $_GET["2nd_choice"];
 $choice3 = $_GET["3rd_choice"];
 
-$industry = $_GET["industry"];
-$learn = $_GET["learn"];
+$school = $_GET["school"];
+$classyear = $_GET["classyear"];
 
-$mailingList = $_GET["radio0"];
 
 // Escape User Input to help prevent SQL Injection
 
@@ -53,10 +52,10 @@ $mailingList = $_GET["radio0"];
 	$choice2 = mysql_real_escape_string($choice2);
 	$choice3 = mysql_real_escape_string($choice3);
 	
-	$industry = mysql_real_escape_string($industry);
-	$learn = mysql_real_escape_string($learn);
+	$school = mysql_real_escape_string($school);
+	$classyear = mysql_real_escape_string($classyear);
 	
-	$theseTimes = "x_rec_" . $school. "_times";			
+	$theseTimes = "x_rec_" . $location. "_times";			
 
 	
 	
@@ -79,8 +78,8 @@ $mailingList = $_GET["radio0"];
 
 // ADD NEW STUDENT TO SCHOOL AT SPECIFIC DATE/TIME	
 
-	$theseRegistrants = "x_rec_" . $school . "_registrants";	
-	$addStudent = "INSERT INTO `".$database."`.`".$theseRegistrants."` (dateID, timeID, firstName, lastName, email, phone, choice1, choice2, choice3, industry, learn) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '".$phone."', '".$choice1."', '".$choice2."', '".$choice3."', '".$industry."', '".$learn."');";		
+	$theseRegistrants = "x_rec_" . $location . "_registrants";	
+	$addStudent = "INSERT INTO `".$database."`.`".$theseRegistrants."` (dateID, timeID, firstName, lastName, email, phone, choice1, choice2, choice3, classyear, school) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '', '".$choice1."', '".$choice2."', '".$choice3."', '".$classyear."', '".$school."');";		
 	//echo $addStudent;		
 	mysql_query($addStudent);
 				
@@ -107,9 +106,9 @@ while($timesRow = mysql_fetch_array($timesResult)){
 }
 
 
-$to      = 'Jayanth.Raghavan@atkearney.com';
+$to      = 'simon.smith@atkearney.com';
 $subject = 'University of Pennsylvania Coffee Chat Registration';
-$message = '<html><h2>Registration Form: A.T. Kearney Full-Time Business Analyst Coffee Chat Sign-up</h2><br/>';
+$message = '<html><h2>A student has registered for a Coffee Chat session</h2><br/>';
 
 $message .= '<strong>Registrant details</strong><br/>';
 $message .= $firstName;
@@ -121,14 +120,9 @@ if ($preferredName != '') {
 $message .= " " .$lastName. "<br/>";
 
 $message .= $confirmedDate." ".$confirmedTime;
-$message .= '<br/><a href="mailto:'.$email.'">'.$email.'</a> | '.$phone.'<br/>';
+$message .= '<br/><a href="mailto:'.$email.'">'.$email.'</a>';
 $message .= '<br/><strong>Office Preferences</strong><br/>';
 $message .= $choice1.', '.$choice2.', '.$choice3.'<br/>';
-$message .= '<br/><strong>What would you like to learn about A.T. Kearney?</strong><br/>';
-$message .= $learn;
-$message .= '<p>Join mailing list: '.$mailingList;
-
-
 
 $headers = 'From: recruiting@atkearney.com' . "\r\n" .
     'Reply-To: recruiting@atkearney.com' . "\r\n" .
@@ -136,7 +130,7 @@ $headers = 'From: recruiting@atkearney.com' . "\r\n" .
 	// To send HTML mail, the Content-type header must be set
 $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$headers .= "\r\nCc: Joseph.Blount@atkearney.com, paul.solans@atkearney.com\r\n\r\n";
+$headers .= "\r\nCc: steve.solano@atkearney.com\r\n\r\n";
 
 $status = mail($to, $subject, $message, $headers);
 
@@ -152,10 +146,10 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 font: 12px/1.5 Arial, Helvetica, Verdana, sans-serif;}
 </style>
 <p>
-Thank you for submitting your coffee chat request.  You are currently scheduled to meet at $confirmedTime on 
-September 21, 2012.  
+Thank you for submitting your coffee chat request.  You are currently scheduled to meet on 
+September 20, 2013.  
 We look forward to meeting with you.</p><p>If you need to change your time slot or have any other questions or concerns, please contact 
-<a href='mailto:Jayanth.Raghavan@atkearney.com'>Jay Raghavan</a> or <a href='mailto:Joseph.Blount@atkearney.com'>Joseph Blount</a></b>.</p>";
+<a style='color: #e88a24' href='mailto:simon.smith@atkearney.com'>Simon Smith</a>.</p>";
 }
 else {
 echo "<style type='text/css'>

@@ -29,12 +29,14 @@ while($datesRow = mysql_fetch_array($datesResult)){
 	if ($datesRow['active'] == 1){
 		echo "<tr><td >";
 		echo $datesRow['slot_date'];		
-		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='active_chat_dates_2.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a> | Disable</td></tr>";
+		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='active_chat_dates_2.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a> | Disable";
+		echo " | <a href='active_chat_dates_2.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td></tr>";
 	}
 	else {
 		echo "<tr><td>";
 		echo $datesRow['slot_date'];		
-		echo "</td><td style='font-size: 11px; padding-left: 15px;'>Enable | <a href='active_chat_dates_2.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a></td></tr>";
+		echo "</td><td style='font-size: 11px; padding-left: 15px;'>Enable | <a href='active_chat_dates_2.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a>";
+		echo " | <a href='active_chat_dates_2.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td></tr>";
 	}
 	
 }

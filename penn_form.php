@@ -1,18 +1,5 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-	$host = "egv-vmjmladb01";
-	$user = "root";
-	$pass = "splhcb!@11";
-	$database = "__global";
-	
-    $con=mysql_connect($host,$user,$pass);
-	if ($con)
-	{
-		mysql_select_db($database);
-	}
-	else
-	{
-		echo("Connection failed!");
-	}
+include('connect.php');
 ?>
 <style type="text/css">
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, table
@@ -26,7 +13,7 @@ function ajaxTime() {
   $.ajax({
 	type: 'GET',
 	url: 'time.php',
-	data: 'school=13&date=182&date2=September 21, 2012',
+	data: 'school=13&date=197&date2=September 20, 2013',
 	success: function(response) {
 		var result = (typeof response.j) == 'string' ? eval('(' + response.j + ')') : response.j;				
 		document.getElementById('chattime').innerHTML = response;
@@ -44,19 +31,17 @@ $(document).ready(function(){
 });
 
 </script>
-<p>A.T. Kearney consultants will be in Philadelphia on September 21 for Coffee Chats. We look forward to sharing with you our consulting experiences at A.T. Kearney and answering your questions about the interview process!</p>
-<p>To sign up for a Coffee Chat, please answer the questions below. Note that the following eligibility requirements must apply to sign up for the Coffee Chat or be considered for a full time position at A.T. Kearney: 
-<ul>
-  <li>Currently enrolled in the University of Pennsylvania</li>
-  <li>Graduating from Penn in Fall 2012/ Spring 2013</li>
-
-</ul>
+<p>Thank you for your interest in A.T. Kearney. We will be hosting a Coffee Chat to give you the opportunity to learn more about Management Consulting, A.T. Kearney and the recruiting process.</p>
+<p>Coffee Chat Details:<br/>
+When: Friday, September 20, 2013<br/>
+Where: Saxby's Coffee (4000 Locust St., Philadelphia, PA 19104<br/>
+Time: 10am - 5pm (Please select your preferred time below)
 </p>
 <form action="penn_submit.php" name="coffeeChatBooth">
 <table>
   <tr>
     <td class="table_label">Coffee Chat Date</td>
-    <td>September 21, 2012</td>
+    <td>September 20, 2013</td>
   </tr>
   <tr>
     <td class="table_label">Coffee Chat Time</td>
@@ -80,9 +65,22 @@ $(document).ready(function(){
     <td><input class="cf_inputbox required validate-email" maxlength="150" size="30" title="" id="text_9" name="email" type="text" /></td>
   </tr>
   <tr>
-    <td class="table_label">Phone</td>
-    <td><input class="cf_inputbox required" maxlength="150" size="30" title="" id="text_10" name="phone" type="text" /></td>
+    <td class="table_label">Class Year</td>
+    <td><input class="cf_inputbox required" maxlength="150" size="30" title="" id="text_10" name="classyear" type="text" /></td>
   </tr>
+    <tr>
+    <td class="table_label">School</td>
+ <td><label class="cf_label" text-align="right" style="width: 250px;"></label>
+      <select class="cf_inputbox" id="select_14" size="1" title=""  name="school">
+        <option value="1st choice">Select one</option>
+               
+        <option value="Wharton">Wharton</option>
+        <option value="College">College</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Nursing">Nursing</option>
+     
+      </select>
+</td>	  </tr>
   <tr>
     <td class="table_label">Office preferences </td>
     <td><label class="cf_label" text-align="right" style="width: 250px;"></label>
@@ -98,6 +96,7 @@ $(document).ready(function(){
         <option value="Southfield">Southfield (Detroit)</option>
         <option value="Toronto">Toronto</option>
         <option value="Washington">Washington D.C.</option>
+        <option value="International">International</option>
      
       </select>
       <br/>
@@ -113,6 +112,7 @@ $(document).ready(function(){
         <option value="Southfield">Southfield (Detroit)</option>
         <option value="Toronto">Toronto</option>
         <option value="Washington">Washington D.C.</option>
+        <option value="International">International</option>
 
       </select>
       <br/>
@@ -128,30 +128,13 @@ $(document).ready(function(){
         <option value="Southfield">Southfield (Detroit)</option>
         <option value="Toronto">Toronto</option>
         <option value="Washington">Washington D.C.</option>
-   
+           <option value="International">International</option>
+
     </select></td>
   </tr>
-  <tr>
-    <td class="table_label"> What would you like to learn about A.T. Kearney?</td>
-    <td><textarea class="cf_inputbox" rows="3" id="text_12" title="" cols="30" name="learn"></textarea></td>
-  </tr>
-  <tr>
-    <td class="table_label"> Would you like to join our mailing list for future events? </td>
-    <td><input value="Yes" title="" class="radio validate-one-required" id="radio00" name="radio0" type="radio" />
-      <label for="radio00" class="radio_label">Yes</label>
-      <br />
-      <input value="No" title="" class="radio validate-one-required" id="radio01" name="radio0" type="radio" />
-      <label for="radio01" class="radio_label">No</label>
-    <br /></td>
-  </tr>
-<!--  <tr>
-    <td class="table_label">Do you meet all of the eligibility requirements as stated above?</td>
-    <td><input value="Yes" title="" class="radio validate-one-required" id="check10" name="check1[]" type="checkbox" />
-      <label for="check10" class="check_label">Yes</label>
-    <br /></td>
-  </tr>
--->  <tr>
+   <tr>
     <td></td>
     <td><input value="Submit" name="button_18" type="submit" /></td>
   </tr>
 </table>
+<p>If you have any questions please contact Simon Smith at <a href='mailto:simon.smith@atkearney.com'>simon.smith@atkearney.com</a>.</p><p>We look forward to meeting you on September 20.</p>

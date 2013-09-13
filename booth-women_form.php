@@ -1,18 +1,6 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-	$host = "egv-vmjmladb01";
-	$user = "root";
-	$pass = "splhcb!@11";
-	$database = "__global";
-	
-    $con=mysql_connect($host,$user,$pass);
-	if ($con)
-	{
-		mysql_select_db($database);
-	}
-	else
-	{
-		echo("Connection failed!");
-	}
+include('connect.php');
+
 ?>
 <style type="text/css">
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, table

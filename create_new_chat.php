@@ -15,7 +15,7 @@ $thisSchool = $_GET["school"];
 
 echo "<p><b>Create New Coffee Chats</b><p style='font-size: 10pt;'>Please enter dates in the format <B>Month XX, YEAR</b></p>";
 
-echo "<form name='newCoffeeChat' action='create_new_chat_2.php'>";
+echo "<form name='newCoffeeChat' action='create_new_chat_15min.php'>";
 echo "<input type='hidden' name='school' value='" .$thisSchool. "' />";
 ?>
 <br/>Add new date: <input type="text" name="newDate" />
