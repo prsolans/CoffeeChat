@@ -15,7 +15,7 @@ $selectedDate = $_GET['date'];
 
 $var = $thisSchool;
 
-$schoolDisplay = 'SELECT schoolName, image FROM `'.$database.'`.`x_rec_schools` WHERE schoolID = ' .$thisSchool. ';';
+$schoolDisplay = 'SELECT name, image FROM `'.$database.'`.`School` WHERE id = ' .$thisSchool. ';';
 $schoolResult = mysql_query($schoolDisplay);
 
 while($thisSchool = mysql_fetch_array($schoolResult)){
@@ -23,7 +23,7 @@ while($thisSchool = mysql_fetch_array($schoolResult)){
 	if($thisSchool['image']){
 	echo "<img style='margin: 0px 15px 15px 15px;' src='images/" .$thisSchool['image']. "' align='left'/>";
 	}
-	echo "<h2 style='margin: 15px;'>".$thisSchool['schoolName']."</h2>";
+	echo "<h2 style='margin: 15px;'>".$thisSchool['name']."</h2>";
 }
 
 
@@ -31,11 +31,11 @@ while($thisSchool = mysql_fetch_array($schoolResult)){
 <div style='border-right: 2px solid black; width: 300px; float: left; margin: 15px; padding: 15px; clear: both;'>
 <?php	 	 		 		 	 	 		 		 		 		 		 	 
 
-$dateDisplay = 'SELECT slot_date FROM `'.$database.'`.`x_rec_chatdates` WHERE id = ' .$selectedDate. ';';
+$dateDisplay = 'SELECT eventdate FROM `'.$database.'`.`EventDate` WHERE id = ' .$selectedDate. ';';
 $dateResult = mysql_query($dateDisplay);
 
 while($thisDate = mysql_fetch_array($dateResult)){
-	echo "<h3 style='clear: both; color: blue;'>".$thisDate['slot_date']."</h3>";
+	echo "<h3 style='clear: both; color: blue;'>".$thisDate['eventdate']."</h3>";
 	
 }
 

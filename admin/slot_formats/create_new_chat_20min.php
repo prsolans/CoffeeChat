@@ -1,38 +1,6 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
-include('../../config/connect.php');
-
-	// Retrieve data from Query String
-$thisSchool = $_GET['school'];
-$newDate = $_GET['newDate'];
-
-	// Escape User Input to help prevent SQL Injection
-$thisSchool = mysql_real_escape_string($thisSchool);
-$newDate = mysql_real_escape_string($newDate);
-
-	// display main school info
-$schoolQuery = 'SELECT * FROM `__global`.`x_rec_schools` WHERE schoolID = ' .$thisSchool .';';
-$schoolResult = mysql_query($schoolQuery);
-
-while($schoolRow = mysql_fetch_array($schoolResult)){
-	echo "<h2>" .$schoolRow['schoolName']. "</h2>";	
-}
-
-		//insert new date into the database
-$datesQuery = 'INSERT INTO  `__global`.`x_rec_chatdates` (slot_date, schoolID, active) VALUES ("' .$newDate. '", ' .$thisSchool. ', "0");';
-mysql_query($datesQuery);
-
-$findDateID = 'SELECT id FROM `__global`.`x_rec_chatdates` WHERE slot_date = "'.$newDate.'";';
-$IDResult = mysql_query($findDateID);
-
-while($IDRow = mysql_fetch_array($IDResult)){
-	$thisDateID = $IDRow['id'];
-	echo $thisDateID;
-}
-
-
-	//create time slots for new date
-$theseTimes = "x_rec_" . $thisSchool . "_times";
+include('create_timeslots.php');
 
 $timeQuery0 = 'INSERT INTO  `__global`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, active) VALUES ("8:00 - 8:20", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery0);
@@ -106,12 +74,6 @@ mysql_query($timeQuery22);
 $timeQuery23 = 'INSERT INTO  `__global`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, active) VALUES ("4:40 - 5:00", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery23);
 
-echo $thisDateID;
-
-$url = "Location: coffeeChat_admin2.php?school=".$thisSchool."&date=".$thisDateID;
-
-echo $url;
-
-header($url);
+header("Location: ".$baseurl."/date_detail.php?date=".$thisDateID."&school=".$thisSchool."");
 
 ?>

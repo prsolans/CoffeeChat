@@ -9,13 +9,14 @@ $status = $_GET['status'];
 if($status != 2){
 		
 	//insert new date into the database
-	$datesQuery = "UPDATE  `".$database."`.`x_rec_chatdates` SET active='".$status."' WHERE id='".$thisDate."'";
+	$datesQuery = "UPDATE  `".$database."`.`EventDate` SET status=".$status." WHERE id='".$thisDate."'";
 	//echo $datesQuery;
 	mysql_query($datesQuery);
 }
 else { 
-	$datesQuery = "DELETE FROM `".$database."`.`x_rec_chatdates` WHERE id='".$thisDate."'";
-	mysql_query($datesQuery);
+	$datesQuery = "DELETE FROM `".$database."`.`EventDate` WHERE id='".$thisDate."'";
+  //echo $datesQuery;
+  mysql_query($datesQuery);
 }
 
 	header("Location: ".$baseurl."/school_detail.php?date=".$selectedDate."&school=".$thisSchool."");

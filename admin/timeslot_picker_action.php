@@ -18,14 +18,13 @@ $queryString = parse_url($url1, PHP_URL_QUERY);
 
 parse_str($queryString);
 
-$theseTimes = "x_rec_" . $thisSchool. "_times";		
 
 //echo $school;
 //echo "<br/>".$date;
 
 $activeDates = count($_GET) - 2;
 
-$timeQuery = 'SELECT id FROM `'.$database.'`.`'.$theseTimes.'` WHERE date = ' .$selectedDate;
+$timeQuery = 'SELECT id FROM `'.$database.'`.`Timeslot` WHERE date = ' .$selectedDate;
 $timeResult = mysql_query($timeQuery);
 
 while ($timeRow = mysql_fetch_array($timeResult)){
@@ -54,7 +53,7 @@ $thisVar = $_GET[$item];
 
 	
 
-$updateAvailableSlots = ("UPDATE `".$database."`.`".$theseTimes."` SET slots_total = ".$thisVar." WHERE id=".$starter.";");
+$updateAvailableSlots = ("UPDATE `".$database."`.`Timeslot` SET slots_total = ".$thisVar." WHERE id=".$starter.";");
 	
 	//echo $updateAvailableSlots;
 	

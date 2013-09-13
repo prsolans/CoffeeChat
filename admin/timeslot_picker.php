@@ -15,9 +15,9 @@ $chosenTime = "timeChosen";
 
 
 // SELECTABLE LIST OF AVAILABLE TIME SLOTS FOR THIS DAY
-$theseTimes = "x_rec_" . $thisSchool . "_times";
 
-$timeQuery = 'SELECT * FROM `'.$database.'`.`'.$theseTimes.'` WHERE date = ' .$thisDate;
+
+$timeQuery = 'SELECT * FROM `'.$database.'`.`Timeslot` WHERE date = ' .$thisDate;
 $timeResult = mysql_query($timeQuery);
 	
 echo "<form name='updateNoAvailable' action='timeslot_picker_action.php'>";

@@ -11,8 +11,8 @@
 	$host = "localhost";
 	$user = "root";
 	$pass = "root";
-	$database = "registration";
-	$baseurl = "http://localhost:8888/atkearney/admin/";
+	$database = "eventreg";
+	$baseurl = "http://localhost:8888/atkearney/admin";
 
     $con=mysql_connect($host,$user,$pass);
 	if ($con)

@@ -4,9 +4,8 @@
 $thisSchool = $_GET['school'];
 $selectedDate = $_GET['date'];
 
-$theseTimes = "x_rec_" .$thisSchool . "_times";
 
-$signupDisplay = 'SELECT * FROM `'.$database.'`.`'.$theseTimes.'` WHERE date = ' .$selectedDate. ';';
+$signupDisplay = 'SELECT * FROM `'.$database.'`.`Timeslot` WHERE date = ' .$selectedDate. ';';
 $signupResult = mysql_query($signupDisplay);
 
 echo "<table border='1' cellpadding='7' style='padding: 7px; text-align: center;'><tr><td colspan='4'><b># SLOTS AVAILABLE</b></td></tr>";

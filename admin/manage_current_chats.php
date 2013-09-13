@@ -6,7 +6,7 @@
 $thisSchool = $_GET["school"];
 
 	// build query of selected schools currently scheduled dates
-$datesQuery = 'SELECT * FROM `'.$database.'`.`x_rec_chatdates` WHERE schoolID = ' .$thisSchool .' ORDER BY slot_date;';
+$datesQuery = 'SELECT * FROM `'.$database.'`.`EventDate` WHERE school = '.$thisSchool .' ORDER BY eventdate;';
 $datesResult = mysql_query($datesQuery);
 
 echo "<p><b>Manage Current Coffee Chats</b><br/>";
@@ -15,7 +15,7 @@ echo "<form name='manageCurrent' action='date_detail.php'>";
 echo "<input type='hidden' name='school' value='" .$thisSchool. "' />";
 echo "<select name='date'>";
 while($datesRow = mysql_fetch_array($datesResult)){
-	echo "<option value='" .$datesRow['id']. "'>" .$datesRow['slot_date']. "</option>";	
+	echo "<option value='" .$datesRow['id']. "'>" .$datesRow['eventdate']. "</option>";	
 }
 
 echo "</select>";
