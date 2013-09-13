@@ -1,10 +1,6 @@
-<?php	 	 		 		 	 	 		 		 		 		 		 	
+<?php	 	 		
+include('../config/connect.php');
 
-$con = mysql_connect("egv-vmjmladb01","root","splhcb!@11");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
 
 	// Retrieve data from Query String
 $thisSchool = $_GET['school'];
@@ -17,7 +13,7 @@ $selectedDate = $_GET['date'];
 $theseRegistrants = "x_rec_" . $thisSchool . "_registrants";
 
 
-$registrantDisplay = 'SELECT * FROM `__global`.`'.$theseRegistrants.'` WHERE dateID = ' .$selectedDate. ' ORDER BY timeID ASC;';
+$registrantDisplay = 'SELECT * FROM `'.$database.'`.`'.$theseRegistrants.'` WHERE dateID = ' .$selectedDate. ' ORDER BY timeID ASC;';
 //echo $registrantDisplay;
 $registrantResult = mysql_query($registrantDisplay);
 
@@ -34,7 +30,7 @@ while ($registrantRow = mysql_fetch_array($registrantResult)){
 		
 		$theseTimes = "x_rec_" .$thisSchool . "_times";
 
-		$signupDisplay = 'SELECT slot_time FROM `__global`.`'.$theseTimes.'` WHERE date = ' .$selectedDate. ' AND id = '.$registrantRow['timeID'].';';
+		$signupDisplay = 'SELECT slot_time FROM `'.$database.'`.`'.$theseTimes.'` WHERE date = ' .$selectedDate. ' AND id = '.$registrantRow['timeID'].';';
 		$signupResult = mysql_query($signupDisplay);
 
 		//echo $signupDisplay;
@@ -78,5 +74,5 @@ while ($registrantRow = mysql_fetch_array($registrantResult)){
 }
 echo "</table>";
 
-
+echo "<a href='date_detail.php?school=$thisSchool&date=$selectedDate'>Back to Date Details</a>"
 ?>

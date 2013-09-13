@@ -1,10 +1,6 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
-$con = mysql_connect("egv-vmjmladb01","root","splhcb!@11");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
+include('../../config/connect.php');
 
 	// Retrieve data from Query String
 $thisSchool = $_GET['school'];

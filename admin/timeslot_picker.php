@@ -1,10 +1,4 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-
-$con = mysql_connect("egv-vmjmladb01","root","splhcb!@11");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
   
 $thisSchool = $_GET['school'];
 $thisDate = $_GET['date'];
@@ -23,10 +17,10 @@ $chosenTime = "timeChosen";
 // SELECTABLE LIST OF AVAILABLE TIME SLOTS FOR THIS DAY
 $theseTimes = "x_rec_" . $thisSchool . "_times";
 
-$timeQuery = 'SELECT * FROM `__global`.`'.$theseTimes.'` WHERE date = ' .$thisDate;
+$timeQuery = 'SELECT * FROM `'.$database.'`.`'.$theseTimes.'` WHERE date = ' .$thisDate;
 $timeResult = mysql_query($timeQuery);
 	
-echo "<form name='updateNoAvailable' action='timeslot_picker2.php'>";
+echo "<form name='updateNoAvailable' action='timeslot_picker_action.php'>";
 echo "<input type='hidden' name='school' value='" .$thisSchool. "' />";
 echo "<input type='hidden' name='date' value='" .$selectedDate. "' />";
 

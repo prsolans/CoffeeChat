@@ -2,18 +2,11 @@
 <head>
 </head>
 <body style="font-family: Helvetica, Arial, sans-serif;">
-<?php	 	 		 		 	 	 		 		 		 		 		 	
+<?php                                     
 
-$con = mysql_connect("egv-vmjmladb01","root","splhcb!@11");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
+include('../config/connect.php');
+
 ?>
-
-
-
-
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
 	// Retrieve data from Query String
@@ -22,7 +15,7 @@ $selectedDate = $_GET['date'];
 
 $var = $thisSchool;
 
-$schoolDisplay = 'SELECT schoolName, image FROM `__global`.`x_rec_schools` WHERE schoolID = ' .$thisSchool. ';';
+$schoolDisplay = 'SELECT schoolName, image FROM `'.$database.'`.`x_rec_schools` WHERE schoolID = ' .$thisSchool. ';';
 $schoolResult = mysql_query($schoolDisplay);
 
 while($thisSchool = mysql_fetch_array($schoolResult)){
@@ -38,7 +31,7 @@ while($thisSchool = mysql_fetch_array($schoolResult)){
 <div style='border-right: 2px solid black; width: 300px; float: left; margin: 15px; padding: 15px; clear: both;'>
 <?php	 	 		 		 	 	 		 		 		 		 		 	 
 
-$dateDisplay = 'SELECT slot_date FROM `__global`.`x_rec_chatdates` WHERE id = ' .$selectedDate. ';';
+$dateDisplay = 'SELECT slot_date FROM `'.$database.'`.`x_rec_chatdates` WHERE id = ' .$selectedDate. ';';
 $dateResult = mysql_query($dateDisplay);
 
 while($thisDate = mysql_fetch_array($dateResult)){
@@ -62,7 +55,7 @@ include('timeslot_picker.php'); ?>
 
 
 <?php	 	 		 		 	 	 		 		 		 		 		 	 
-echo "<h4 style='padding: 15px; clear: both;'>Administer other dates for this school: <a href='coffeeChat_admin.php?school=".$var."'>Click here</a></h4>";
+echo "<h4 style='padding: 15px; clear: both;'>Administer other dates for this school: <a href='school_detail.php?school=".$var."'>Click here</a></h4>";
 ?>
 
 </body></html>

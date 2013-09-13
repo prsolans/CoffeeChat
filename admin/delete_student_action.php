@@ -1,10 +1,7 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
-$con = mysql_connect("egv-vmjmladb01","root","splhcb!@11");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
+include('../config/connect.php');
+
 
 	// Retrieve data from Query String
 $thisSchool = $_GET['school'];
@@ -18,19 +15,11 @@ $selectedDate = mysql_real_escape_string($selectedDate);
 $selectedTime = mysql_real_escape_string($selectedTime);
 $studentName = mysql_real_escape_string($studentName);
 
-	
 
-echo "<br/>";
-echo $thisSchool;
-echo "<br/>";
-echo $selectedDate;
-echo "<br/>";
-echo $studentName;
-echo "<br/>Explode: ";
 
 $explode = explode(".", $studentName);
 
-echo $explode[0]."!!".$explode[1]."<br/>";
+//echo $explode[0]."!!".$explode[1]."<br/>";
 
 $studentName = $explode[0];
 $timeSlot = $explode[1];
@@ -39,9 +28,9 @@ $timeSlot = $explode[1];
 
 	$theseRegistrants = "x_rec_" . $thisSchool . "_registrants";
 
-	$removeStudent = ("DELETE FROM `__global`.`".$theseRegistrants."` WHERE id= ".$studentName.";");
+	$removeStudent = ("DELETE FROM `".$database."`.`".$theseRegistrants."` WHERE id= ".$studentName.";");
 				
-	echo $removeStudent;
+	//echo $removeStudent;
 				
 	mysql_query($removeStudent);
 				
@@ -49,13 +38,13 @@ $timeSlot = $explode[1];
 	// UPDATE SLOTS_FILLED
 	$theseTimes = "x_rec_" . $thisSchool. "_times";				
 				
-	$updateRegistrationCount = ("UPDATE `__global`.`".$theseTimes."` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot.";");
+	$updateRegistrationCount = ("UPDATE `".$database."`.`".$theseTimes."` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot.";");
 	
-	echo $updateRegistrationCount;
+	//echo $updateRegistrationCount;
 	
 	mysql_query($updateRegistrationCount);
 	
-	header("Location: coffeeChat_admin2.php?date=".$selectedDate."&school=".$thisSchool."");
+	header('Location: '.$baseurl.'/date_detail.php?school='.$thisSchool.'&date='.$selectedDate.'');
 	
 
 ?>
