@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL); ini_set('display_errors', 'On'); 
+//error_reporting(E_ALL); ini_set('display_errors', 'On'); 
 
 include('../../config/connect.php');
 
@@ -40,7 +40,6 @@ while($IDRow = mysql_fetch_array($IDResult)){
   $thisDateID = $IDRow['id'];
 //  echo $thisDateID;
 }
-
 
   //create time slots for new date
 $theseTimes = "Timeslot";

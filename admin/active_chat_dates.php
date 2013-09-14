@@ -4,6 +4,7 @@
 	// get school from URL
 $thisSchool = $_GET["school"];
 
+
 echo "<p><b>Manage Coffee Chat Availability to Students</b></p><p><em>Select only the dates you want to currently appear for students to register.</em></p>";
 
 echo "<form name='newDaterSelect' action='active_chat_dates_action.php'>";
@@ -20,13 +21,13 @@ while($datesRow = mysql_fetch_array($datesResult)){
 	if ($datesRow['status'] == 1){
 		echo "<tr><td >";
 		echo $datesRow['eventdate'];		
-		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a> | Disable";
+		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a> | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a> | Disable";
 		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td></tr>";
 	}
 	else {
 		echo "<tr><td>";
 		echo $datesRow['eventdate'];		
-		echo "</td><td style='font-size: 11px; padding-left: 15px;'>Enable | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a>";
+		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a> | Enable | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a>";
 		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td></tr>";
 	}
 	
