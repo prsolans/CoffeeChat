@@ -1,15 +1,14 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-require_once('connect.php');
+
+require_once('config/connect.php');
 
 $date = $_GET["date"];
 $school = $_GET["school"];
-$timesQuery = "SELECT id, slot_time FROM `__global`.`x_rec_".$school."_times` WHERE date = '".$date."' AND slots_total > slots_filled ORDER BY id;";
+$timesQuery = "SELECT id, slot_time FROM `".$database."`.`Timeslot` WHERE date = '".$date."' AND slots_total > slots_filled ORDER BY id;";
 $timesResult = mysql_query($timesQuery);
 
-//echo "HELLO";
-
-//echo $timesQuery;
-
+//echo "<p>Q: ".$timesQuery;
+//echo mysql_query($timesQuery) ? OK : FAIL;
 
 $num_rows = mysql_num_rows($timesResult);
 
@@ -20,7 +19,9 @@ while($timesRow = mysql_fetch_array($timesResult)){
 	echo "<option value='" .$timesRow['id']. "'>" .$timesRow['slot_time']. "</option>";	
 }
 echo "</select>";
+//return '1';
 }
 
-else {echo "<strong style='color: red;'>All time slots for this date have been filled. Please check for additional slots on different dates.</strong>";}
+else {echo "<strong style='color: red;'>All time slots for this date have been filled. Please check for additional slots on different dates.</strong>"; //return '2';
+}
 ?>

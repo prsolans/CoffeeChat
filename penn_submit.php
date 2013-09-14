@@ -1,22 +1,8 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
-	$host = "egv-vmjmladb01";
-	$user = "root";
-	$pass = "splhcb!@11";
-	$database = "__global";
-	
-    $con=mysql_connect($host,$user,$pass);
-	if ($con)
-	{
-		mysql_select_db($database);
-	}
-	else
-	{
-		echo("Connection failed!");
-	}
+	include('config/connect.php');
 
-$location = "13";
-
+$location = $_GET['school'];
 $dateID = 197;
 $timeID = $_GET["time"];
 
@@ -55,7 +41,7 @@ $classyear = $_GET["classyear"];
 	$school = mysql_real_escape_string($school);
 	$classyear = mysql_real_escape_string($classyear);
 	
-	$theseTimes = "x_rec_" . $location. "_times";			
+	$theseTimes = "Timeslot";			
 
 	
 	
@@ -78,8 +64,7 @@ $classyear = $_GET["classyear"];
 
 // ADD NEW STUDENT TO SCHOOL AT SPECIFIC DATE/TIME	
 
-	$theseRegistrants = "x_rec_" . $location . "_registrants";	
-	$addStudent = "INSERT INTO `".$database."`.`".$theseRegistrants."` (dateID, timeID, firstName, lastName, email, phone, choice1, choice2, choice3, classyear, school) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '', '".$choice1."', '".$choice2."', '".$choice3."', '".$classyear."', '".$school."');";		
+	$addStudent = "INSERT INTO `".$database."`.`Registration` (eventdate, timeslot, firstname, lastname, email, phone, add1, add2, add3, question1, question2) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '', '".$choice1."', '".$choice2."', '".$choice3."', '".$classyear."', '".$school."');";		
 	//echo $addStudent;		
 	mysql_query($addStudent);
 				
@@ -87,7 +72,7 @@ $classyear = $_GET["classyear"];
 
 
 // GET READABLE DATE FORMAT
-$datesQuery = "SELECT slot_date FROM `".$database."`.`x_rec_chatdates` WHERE id=".$dateID.";";
+$datesQuery = "SELECT slot_date FROM `".$database."`.`EventDate` WHERE id=".$dateID.";";
 $datesResult = mysql_query($datesQuery);
 	
 while($datesRow = mysql_fetch_array($datesResult)){
@@ -106,7 +91,7 @@ while($timesRow = mysql_fetch_array($timesResult)){
 }
 
 
-$to      = 'simon.smith@atkearney.com';
+$to      = 'prsolans@gmail.com';
 $subject = 'University of Pennsylvania Coffee Chat Registration';
 $message = '<html><h2>A student has registered for a Coffee Chat session</h2><br/>';
 

@@ -1,6 +1,7 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 include('config/connect.php');
 $thisSchool = $_GET["school"];
+
 ?>
 <style type="text/css">
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, table
@@ -20,39 +21,19 @@ function ajaxTime() {
 		document.getElementById('chattime').innerHTML = response;
 	}
   });
-  
 }
 
-$(document).ready(function(){
-						  
-
+$(document).ready(function(){				  
 	ajaxTime();
-	
-	
 });
 
 </script>
-<p>A.T. Kearney consultants will be at Le Monde (2885 Broadway) on Friday, October 4 and Friday, November 8 to answer your questions and share their consulting experiences in a less formal and more personal manner.</p>
-<p>To sign up for a Coffee Chat, please answer the questions below and select an available time slot. Note that you must meet the following eligibility requirements to sign up for the Coffee Chat or be considered for a Summer Associate position at A.T. Kearney:</p> 
-<ul>
-<li>Currently enrolled in the Full Time MBA program</li>
-<li>Graduating from the Full Time MBA program in May 2015</li>
-<li>Able to start the summer program at A.T. Kearney in May or June 2014</li>
-</ul>
-<p>Questions that all applicants should answer are:</p> 
-<ul>
-<li>What industry did you work in prior to your MBA?</li>
-<li>What would you like to learn about A.T. Kearney?</li>
-<li>Which A.T. Kearney office(s) are you interested in learning more about?</li>
-</ul>
-<p>You can also learn more about us by reaching out to members of our A.T. Kearney Columbia Recruiting team or visiting us at <a href="www.atkearneyprospect.com" target="_blank">www.atkearneyprospect.com</a></p>
-<p><strong>Patrick Haischer</strong> (04&#39;) &#124; School Officer &#124; <a href="mailto:patrick.haischer@atkearney.com">patrick.haischer@atkearney.com<br>
-</a><strong>Adam Coe</strong> (11&#39;) &#124; School Manager &#124; <a href="mailto:adam.coe@atkearney.com">adam.coe@atkearney.com<br>
-</a><strong>Jodie Kassack</strong> (12&#39;) &#124; Global Prize Lead &#124; <a href="mailto:jodie.kassack@atkearney.com">jodie.kassack@atkearney.com<br>
-</a><strong>Catherine Ransone</strong> (12&#39;) &#124; MBA Class Manager &#124; <a href="mailto:catherine.ransone@atkearney.com">catherine.ransone@atkearney.com<br>
-</a><strong>Katrin Korban</strong> (13&#39;) &#124; MBA Class Manager &#124; <a href="mailto:katrin.korban@atkearney.com">katrin.korban@atkearney.com</a>
-<p>If you have any questions regarding Coffee Chats, please contact <a href="mailto:catherine.ransone@atkearney.com">catherine.ransone@atkearney.com</a> or <a href="mailto:katrin.korban@atkearney.com">katrin.korban@atkearney.com</a>.</p>
-<form action="columbia_submit.php" name="coffeeChatBooth">
+<?php                                     
+echo $database;
+echo $thisSchool;
+?>
+
+<form action="reg_submit.php" name="coffeeChatBooth">
 <table>
   <tr>
     <td class="table_label">Coffee Chat Date</td>

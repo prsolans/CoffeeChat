@@ -15,7 +15,7 @@ $selectedDate = $_GET['date'];
 
 $var = $thisSchool;
 
-$schoolDisplay = 'SELECT name, image FROM `'.$database.'`.`School` WHERE id = ' .$thisSchool. ';';
+$schoolDisplay = 'SELECT * FROM `'.$database.'`.`School` WHERE id = ' .$thisSchool. ';';
 $schoolResult = mysql_query($schoolDisplay);
 
 while($thisSchool = mysql_fetch_array($schoolResult)){
@@ -24,6 +24,7 @@ while($thisSchool = mysql_fetch_array($schoolResult)){
 	echo "<img style='margin: 0px 15px 15px 15px;' src='images/" .$thisSchool['image']. "' align='left'/>";
 	}
 	echo "<h2 style='margin: 15px;'>".$thisSchool['name']."</h2>";
+  echo "<p><a href='../reg_form.php?school=".$thisSchool['id']."'>Go to public form</a> | <a href='school_detail.php?school=".$var."'>Administer dates</a>";
 }
 
 
@@ -53,9 +54,5 @@ include('timeslot_picker.php'); ?>
 <?php	 	 		 		 	 	 		 		 		 		 		 	 //include('add_student.php'); ?>
 </div>
 
-
-<?php	 	 		 		 	 	 		 		 		 		 		 	 
-echo "<h4 style='padding: 15px; clear: both;'>Administer other dates for this school: <a href='school_detail.php?school=".$var."'>Click here</a></h4>";
-?>
 
 </body></html>
