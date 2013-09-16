@@ -15,7 +15,7 @@ if($status != 2){
 }
 else { 
 	$datesQuery = "DELETE FROM `".$database."`.`EventDate` WHERE id='".$thisDate."'";
-  echo $datesQuery;
+  //echo $datesQuery;
   mysql_query($datesQuery);
 }
 

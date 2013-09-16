@@ -15,8 +15,6 @@ $selectedDate = mysql_real_escape_string($selectedDate);
 $selectedTime = mysql_real_escape_string($selectedTime);
 $studentName = mysql_real_escape_string($studentName);
 
-
-
 $explode = explode(".", $studentName);
 
 //echo $explode[0]."!!".$explode[1]."<br/>";
@@ -35,11 +33,11 @@ $timeSlot = $explode[1];
 				
 	// UPDATE SLOTS_FILLED
 				
-	$updateRegistrationCount = ("UPDATE `".$database."`.`Timeslot` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot.";");
+	$updateRegistrationCount = "UPDATE `".$database."`.`Timeslot` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot;
 	
-	//echo $updateRegistrationCount;
+	echo $updateRegistrationCount;
 	
-	mysql_query($updateRegistrationCount);
+	echo mysql_query($updateRegistrationCount) ? OK : FAIL;
 	
 	header('Location: '.$baseurl.'/admin/date_detail.php?school='.$thisSchool.'&date='.$selectedDate.'');
 	

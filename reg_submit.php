@@ -1,8 +1,8 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
-	include('config/connect.php');
+include('config/connect.php');
 
-$location = $_GET['school'];
+$school = $_GET['school'];
 $dateID = $_GET['date'];
 $timeID = $_GET["time"];
 
@@ -38,7 +38,17 @@ $question2 = $_GET["question2"];
 	
 	$question1 = mysql_real_escape_string($question1);
 	$question2 = mysql_real_escape_string($question2);
-	
+
+// GET SCHOOL DETAILS
+	$schoolquery = "SELECT * FROM `".$database."`.`School` WHERE id=$school";
+	$schoolResults = mysql_query($schoolquery);
+
+	while($schooldate = mysql_fetch_array($schoolResults)){
+		$schoolName = $schooldate['name'];
+		$contactname = $schooldate['contactname'];
+		$contactemail = $schooldate['contactemail'];
+		$formurl = $schooldate['formurl'];
+	}
 		
 // CONFIRM SLOT AVAILABILITY
 	$openSlots = "SELECT slots_filled, slots_total FROM `".$database."`.`Timeslot` WHERE id=$timeID";
@@ -86,33 +96,37 @@ while($timesRow = mysql_fetch_array($timesResult)){
 }
 
 
-$to      = 'prsolans@gmail.com';
-$subject = 'University of Pennsylvania Coffee Chat Registration';
-$message = '<html><h2>A student has registered for a Coffee Chat session</h2><br/>';
+$to      = $contactemail;
+$subject = $schoolName." Event Registration";
+$message = '<html><h2>A student has registered for a session.</h2><br/>';
 
 $message .= '<strong>Registrant details</strong><br/>';
-$message .= $firstName;
-
-
-$message .= " " .$lastName. "<br/>";
+$message .= $firstName.''.$lastName.'<br/>';
 
 $message .= $confirmedDate." ".$confirmedTime;
 $message .= '<br/><a href="mailto:'.$email.'">'.$email.'</a>';
 $message .= '<br/><strong>Office Preferences</strong><br/>';
 $message .= $choice1.', '.$choice2.', '.$choice3.'<br/>';
 
-$headers = 'From: recruiting@atkearney.com' . "\r\n" .
-    'Reply-To: recruiting@atkearney.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-	// To send HTML mail, the Content-type header must be set
+$headers = 'From: '.$contactemail.'' . "\r\n" .
+    'Reply-To: '.$contactemail.'' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion(). "\r\n";
+
 $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-//$headers .= "\r\nCc: steve.solano@atkearney.com\r\n\r\n";
+
+// Additional headers
+$headers .= 'Cc: prsolans@gmail.com' . "\r\n";
+//$headers .= 'Bcc: ' . "\r\n";
 
 $status = mail($to, $subject, $message, $headers);
 
-//echo "status: ".$status;
+echo $to;
+echo $subject;
+echo $message;
+echo $headers;
 
+echo $status;
 
 
 
@@ -124,7 +138,7 @@ font: 12px/1.5 Arial, Helvetica, Verdana, sans-serif;}
 </style>
 <p>
 Thank you for submitting your coffee chat request.  You are currently scheduled to meet on ".$confirmedDate." at ".$confirmedTime.". We look forward to meeting with you.</p><p>If you need to change your time slot or have any other questions or concerns, please contact 
-<a style='color: #e88a24' href='mailto:simon.smith@atkearney.com'>Simon Smith</a>.</p>";
+<a style='color: #e88a24' href='mailto:".$contactemail."'>".$contactname."</a>.</p>";
 }
 else {
 echo "<style type='text/css'>
@@ -133,6 +147,6 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 font: 12px/1.5 Arial, Helvetica, Verdana, sans-serif;}
 </style>
 <p>
-The time slot you selected has been filled. <a href='http://www.atkearney.com/penn-coffee-chats' target='_parent'>Click here</a> to select an available time slot.</p>";
+The time slot you selected has been filled. <a href='$formurl' target='_parent'>Click here</a> to select an available time slot.</p>";
 }
 ?>

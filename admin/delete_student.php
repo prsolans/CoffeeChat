@@ -19,9 +19,9 @@ echo "<select name='student'>";
 
 while($signupRow = mysql_fetch_array($signupResult)){
 	
-	$thisTime = $signupRow['timeID'];
+	$thisTime = $signupRow['timeslot'];
 	
-	echo "<option name='student' value='" .$signupRow['id']. ".".$signupRow['id']. "'>" .$signupRow['firstname']. " ".$signupRow['lastname']. " | ";
+	echo "<option name='student' value='" .$signupRow['id']. ".".$signupRow['timeslot']. "'>" .$signupRow['firstname']. " ".$signupRow['lastname']. " | ";
 	
 	$timeDisplay = 'SELECT slot_time FROM `'.$database.'`.`Timeslot` WHERE date = ' .$selectedDate. ' AND id = '.$signupRow['timeslot'].';';
 	$timeResult = mysql_query($timeDisplay);
