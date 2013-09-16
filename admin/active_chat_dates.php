@@ -21,13 +21,13 @@ while($datesRow = mysql_fetch_array($datesResult)){
 	if ($datesRow['status'] == 1){
 		echo "<tr><td >";
 		echo $datesRow['eventdate'];		
-		echo "</td><td><a target='_blank' href='../reg_form.php?school=".$thisSchool."'>View Form</a> | <a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a>";
+		echo "</td><td><a target='_blank' href='".$baseurl."/reg_form.php?school=".$thisSchool."'>View Form</a> | <a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a>";
 		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td><td><a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a></td></tr>";
 	}
 	else {
 		echo "<tr><td>";
 		echo $datesRow['eventdate'];		
-		echo "</td><td><a target='_blank' href='../reg_form.php?school=".$thisSchool."'>View Form</a> | <a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a>";
+		echo "</td><td><a target='_blank' href='".$baseurl."/reg_form.php?school=".$thisSchool."'>View Form</a> | <a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a>";
 		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td><td><a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a></td></tr>";
 	}
 	

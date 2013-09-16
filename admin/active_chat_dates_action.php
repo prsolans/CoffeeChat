@@ -19,5 +19,5 @@ else {
   mysql_query($datesQuery);
 }
 
-	header("Location: ".$baseurl."/school_detail.php?date=".$selectedDate."&school=".$thisSchool."");
+	header("Location: ".$baseurl."/admin/school_detail.php?date=".$selectedDate."&school=".$thisSchool."");
 ?>

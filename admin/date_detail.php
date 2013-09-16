@@ -1,5 +1,6 @@
-<?php include('../views/header.php'); ?>
 <?php include('../config/connect.php');?>
+
+<?php include('../views/header.php'); ?>
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
 	// Retrieve data from Query String
@@ -13,7 +14,7 @@ $schoolResult = mysql_query($schoolDisplay);
 
 while($thisSchool = mysql_fetch_array($schoolResult)){
     echo "<div class='topbar'><p>";
-  echo "<p><a href='../reg_form.php?school=".$thisSchool['id']."'>Go to public form</a> | <a href='school_detail.php?school=".$var."'>Administer dates</a></p></div>";
+  echo "<p><a target='_blank' href='".$baseurl."/reg_form.php?school=".$thisSchool['id']."'>Go to public form</a> | <a href='school_detail.php?school=".$var."'>Administer dates</a></p></div>";
 	echo "<h2>".$thisSchool['name']."</h2>";
 }
 

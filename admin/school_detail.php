@@ -1,14 +1,14 @@
-<html>
-<head>
-  <?php include('../views/header.php'); ?>
-
-</head>
-<body>
-<?php	 	 		 		 	 	 		 		 		 		 		 	
+<?php                                     
 
 include('../config/connect.php');
 
 ?>
+<html>
+<head>
+  <?php include('../views/header.php'); ?>
+</head>
+<body>
+
 <div class='topbar'><p><a href='index.php'>Home</a></p></div>
 <div class='row'>
   <div class='span12'>

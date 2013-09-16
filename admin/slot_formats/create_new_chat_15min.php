@@ -70,8 +70,7 @@ mysql_query($timeQuery21);
 $timeQuery22 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("3:10 - 3:30", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery22);
 
-//echo "hi";
-header("Location: ".$baseurl."/date_detail.php?date=".$thisDateID."&school=".$thisSchool."");
+header("Location: ".$baseurl."/admin/date_detail.php?date=".$thisDateID."&school=".$thisSchool."");
 
 
 ?>
