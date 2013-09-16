@@ -59,7 +59,7 @@ $question2 = $_GET["question2"];
 
 // ADD NEW STUDENT TO SCHOOL AT SPECIFIC DATE/TIME	
 
-	$addStudent = "INSERT INTO `".$database."`.`Registration` (eventdate, timeslot, firstname, lastname, email, phone, add1, add2, add3, question1, question2) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '', '".$choice1."', '".$choice2."', '".$choice3."', '".$classyear."', '".$school."');";		
+	$addStudent = "INSERT INTO `".$database."`.`Registration` (eventdate, timeslot, firstname, lastname, email, phone, add1, add2, add3, question1, question2) VALUES ('".$dateID."', '".$timeID."', '".$firstName."', '".$lastName."', '".$email."', '".$phone."', '".$choice1."', '".$choice2."', '".$choice3."', '".$question1."', '".$question2."');";		
 	//echo $addStudent;		
 	mysql_query($addStudent);
 				
