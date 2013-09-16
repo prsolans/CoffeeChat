@@ -35,9 +35,9 @@ $timeSlot = $explode[1];
 				
 	$updateRegistrationCount = "UPDATE `".$database."`.`Timeslot` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot;
 	
-	echo $updateRegistrationCount;
+	//echo $updateRegistrationCount;
 	
-	echo mysql_query($updateRegistrationCount) ? OK : FAIL;
+	mysql_query($updateRegistrationCount);
 	
 	header('Location: '.$baseurl.'/admin/date_detail.php?school='.$thisSchool.'&date='.$selectedDate.'');
 	

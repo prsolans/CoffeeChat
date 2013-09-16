@@ -121,16 +121,6 @@ $headers .= 'Cc: prsolans@gmail.com' . "\r\n";
 
 $status = mail($to, $subject, $message, $headers);
 
-echo $to;
-echo $subject;
-echo $message;
-echo $headers;
-
-echo $status;
-
-
-
-
 echo "<style type='text/css'>
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, table
 {
