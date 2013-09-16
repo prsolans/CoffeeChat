@@ -1,7 +1,12 @@
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+</head>
+<body>
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 include('config/connect.php');
 $thisSchool = $_GET["school"];
-
 ?>
 <style type="text/css">
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, table
@@ -131,3 +136,5 @@ echo "</select>";
     <td><input value="Submit" name="button_18" type="submit" /></td>
   </tr>
 </table>
+</body>
+</html>
