@@ -5,7 +5,7 @@
 $thisSchool = $_GET["school"];
 
 
-echo "<p><b>Manage Coffee Chat Availability to Students</b></p><p><em>Select only the dates you want to currently appear for students to register.</em></p>";
+echo "<h3>Manage Coffee Chat Availability to Students</h3><p><em>Select only the dates you want to currently appear for students to register.</em></p>";
 
 echo "<form name='newDaterSelect' action='active_chat_dates_action.php'>";
 echo "<input type='hidden' name='school' value='" .$thisSchool. "' />";

@@ -6,6 +6,7 @@ include('../../config/connect.php');
   // Retrieve data from Query String
 $thisSchool = $_GET['school'];
 $newDate = $_GET['newDate'];
+$increment = $_GET['increment'];
 
   // Escape User Input to help prevent SQL Injection
 $thisSchool = mysql_real_escape_string($thisSchool);
@@ -43,4 +44,7 @@ while($IDRow = mysql_fetch_array($IDResult)){
 
   //create time slots for new date
 $theseTimes = "Timeslot";
+$url = 'create_new_chat_'.$increment.'min.php';
+
+include($url);
 ?>

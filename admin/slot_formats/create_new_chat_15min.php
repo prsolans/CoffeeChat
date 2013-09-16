@@ -1,5 +1,4 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
-include('create_timeslots.php');
 
 $timeQuery0 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("8:00 - 8:15", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery0);
