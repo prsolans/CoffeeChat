@@ -28,7 +28,7 @@ echo "<table>";
 
 while($timeRow = mysql_fetch_array($timeResult)){
 	echo "<tr><td>" .$timeRow['slot_time']. "</td><td>";
-	echo "<input style='margin-left: 9px;' type='textarea' name='no".$timeRow['id']."' value='".$timeRow['slots_total']."' size='1'/>";
+	echo "<input class='timeslot-input-field' type='textarea' name='no".$timeRow['id']."' value='".$timeRow['slots_total']."' size='1'/>";
 	echo "</td></tr>";	
 
 }

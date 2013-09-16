@@ -26,9 +26,7 @@ $timeSlot = $explode[1];
 
 	// build query of STUDENT NAMES scheduled for this DATE at this SCHOOL
 
-	$theseRegistrants = "x_rec_" . $thisSchool . "_registrants";
-
-	$removeStudent = ("DELETE FROM `".$database."`.`".$theseRegistrants."` WHERE id= ".$studentName.";");
+	$removeStudent = ("DELETE FROM `".$database."`.`Registration` WHERE id= ".$studentName.";");
 				
 	//echo $removeStudent;
 				
@@ -36,9 +34,8 @@ $timeSlot = $explode[1];
 				
 				
 	// UPDATE SLOTS_FILLED
-	$theseTimes = "x_rec_" . $thisSchool. "_times";				
 				
-	$updateRegistrationCount = ("UPDATE `".$database."`.`".$theseTimes."` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot.";");
+	$updateRegistrationCount = ("UPDATE `".$database."`.`Timeslot` SET slots_filled = slots_filled - 1 WHERE id=".$timeSlot.";");
 	
 	//echo $updateRegistrationCount;
 	

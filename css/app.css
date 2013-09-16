@@ -1,0 +1,13 @@
+body {
+  margin:22px;
+}
+
+.topbar {
+  border-bottom: 2px solid #333;
+}
+
+.timeslot-input-field {
+
+  width: 40px;
+  margin-left: 19px;
+}

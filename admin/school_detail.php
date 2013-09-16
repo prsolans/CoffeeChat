@@ -1,15 +1,19 @@
 <html>
 <head>
+  <?php include('../views/header.php'); ?>
+
 </head>
-<body style="font-family: Helvetica, Arial, sans-serif;">
+<body>
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
 include('../config/connect.php');
 
 ?>
-
-<h1 style='margin:15px;'>Recruiting Coffee Chat Administration Panel</h1>
-<p><a href='index.php'>Home</a></p>
+<div class='topbar'><p><a href='index.php'>Home</a></p></div>
+<div class='row'>
+  <div class='span12'>
+</div>
+</div>
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
 $thisSchool = $_GET['school'];
@@ -17,16 +21,21 @@ $schoolDisplay = 'SELECT * FROM `'.$database.'`.`School` WHERE id = ' .$thisScho
 $schoolResult = mysql_query($schoolDisplay);
 
 while($thisSchool = mysql_fetch_array($schoolResult)){
-  echo "<h2 style='margin: 15px;'>".$thisSchool['name']."</h2>";
+  echo "<h2>".$thisSchool['name']."</h2>";
   $schoolID = $thisSchool['id'];
 }
-
-echo "<div style='clear: both;'>";
-include 'create_new_chat.php';
-
-include 'active_chat_dates.php';
-//include 'manage_current_chats.php';
-
-echo "</div>";
-
 ?>
+
+<div class='row'>
+  <div class='span6'>
+<?php include 'create_new_chat.php'; ?>
+  </div>
+    <div class='span6'>
+
+ <?php include 'active_chat_dates.php'; ?>
+
+
+  </div>
+</div>
+
+

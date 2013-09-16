@@ -1,15 +1,25 @@
 <html>
 <head>
+<?php include('../views/header.php'); ?>
+ 
+ 
 </head>
 <body style="font-family: Helvetica, Arial, sans-serif;">
-<?php	 	 		 		 	 	 		 		 		 		 		 	
+  <!-- Obtain latest version of jquery automatically -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- Obtain Bootstrap javascript from CDN (online service) so it doesn't have to be on my machine -->
+     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+ <?php	 	 		 		 	 	 		 		 		 		 		 	
 include('../config/connect.php');
 
 $schoolList = 'SELECT id, name FROM `'.$database.'`.`School`';
 $schoolResult = mysql_query($schoolList);
 
 ?>
-<h1>Recruiting Event Registration</h1><h2>Administration Panel</h2>
+<div class='topbar'><h1>A.T. Kearney Recruiting Event Registration</h1></div>
+<div class='row'>
+  <span class='span12'>
+<h2>Schools</h2>
 <ul>
 <?php 
 
@@ -20,3 +30,5 @@ echo '<li><a href="school_detail.php?school='.$item['id'].'">'.$item['name'].'</
   
 ?>
 </ul>
+</div>
+</div>

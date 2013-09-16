@@ -1,4 +1,4 @@
-<div style="border-top: 2px black solid; margin: 15px; padding: 15px;">
+<div>
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
 	// get school from URL
@@ -14,21 +14,21 @@ $datesQuery = 'SELECT * FROM `'.$database.'`.`EventDate` WHERE school = '.$thisS
 
 $datesResult = mysql_query($datesQuery);
 
-echo "<table><tr style='font-weight: bold;'><td>Date</td><td style='padding-left: 15px;'>Action</td></tr>";
+echo "<table class='table table-striped'><tr style='font-weight: bold;'><td>Date</td><td>Action</td><td>Status</td></tr>";
 
 while($datesRow = mysql_fetch_array($datesResult)){
 	
 	if ($datesRow['status'] == 1){
 		echo "<tr><td >";
 		echo $datesRow['eventdate'];		
-		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a> | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a> | Disable";
-		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td></tr>";
+		echo "</td><td><a target='_blank' href='../reg_form.php?school=".$thisSchool."'>View Form</a> | <a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a>";
+		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td><td><a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=0'>Enable</a></td></tr>";
 	}
 	else {
 		echo "<tr><td>";
 		echo $datesRow['eventdate'];		
-		echo "</td><td style='font-size: 11px; padding-left: 15px;'><a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a> | Enable | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a>";
-		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td></tr>";
+		echo "</td><td><a target='_blank' href='../reg_form.php?school=".$thisSchool."'>View Form</a> | <a href='date_detail.php?school=".$thisSchool."&date=".$datesRow['id']."'>Edit</a>";
+		echo " | <a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=2'>Delete</a></td><td><a href='active_chat_dates_action.php?school=".$thisSchool."&date=".$datesRow['id']."&status=1'>Disable</a></td></tr>";
 	}
 	
 }

@@ -8,7 +8,7 @@ $selectedDate = $_GET['date'];
 $registrantDisplay = 'SELECT * FROM `'.$database.'`.`Registration` WHERE eventdate = ' .$selectedDate. ' ORDER BY id ASC;';
 $registrantResult = mysql_query($registrantDisplay);
 
-echo "<table border='1' cellpadding='7' style='padding: 7px; text-align: center;'><tr><td colspan='2'><B>CURRENT SIGN UPS</b></td></tr>";
+echo "<table class='table table-striped'><tr><td colspan='2'><B>CURRENT SIGN UPS</b></td></tr>";
 
 echo "<tr><th style='text-align: left;'>Time</th><th>Name</th></tr>";
 

@@ -1,5 +1,5 @@
 
-<div style="border-top: 2px black solid; margin: 15px; padding: 15px;">
+<div>
 <p><b>Create New Coffee Chats</b></p>
 <p>Please enter dates in the FORMAT Month XX, YEAR</p>
 

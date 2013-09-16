@@ -8,7 +8,7 @@ $selectedDate = $_GET['date'];
 $signupDisplay = 'SELECT * FROM `'.$database.'`.`Timeslot` WHERE date = ' .$selectedDate. ';';
 $signupResult = mysql_query($signupDisplay);
 
-echo "<table border='1' cellpadding='7' style='padding: 7px; text-align: center;'><tr><td colspan='4'><b># SLOTS AVAILABLE</b></td></tr>";
+echo "<table class='table table-striped'><tr><td colspan='4'><b># SLOTS AVAILABLE</b></td></tr>";
 echo "<tr><th style='text-align: left;'>Time</th><th># Total</th><th># Taken</th><th># Empty</th></tr>";
 while($signupRow = mysql_fetch_array($signupResult)){
 
