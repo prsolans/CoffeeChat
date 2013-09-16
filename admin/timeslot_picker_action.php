@@ -64,6 +64,6 @@ $starter++;
 }
 	
 
-	header('Location: '.$baseurl.'/date_detail.php?school='.$thisSchool.'&date='.$selectedDate.'');
+	header('Location: '.$baseurl.'/admin/date_detail.php?school='.$thisSchool.'&date='.$selectedDate.'');
 
 ?>
