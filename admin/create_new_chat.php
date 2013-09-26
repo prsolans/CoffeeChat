@@ -10,6 +10,7 @@
 Time increments: <select name='increment'>
 <option value='15'>15 minutes</option>
 <option value='20'>20 minutes</option>
+<option value='20wbreak'>20 minutes w/ 10-minute breaks</option>
 <option value='30'>30 minutes</option>
 <option value='60'>60 minutes</option>
 </select><br/><input type="submit" class='btn' value="Create new chat date" />
