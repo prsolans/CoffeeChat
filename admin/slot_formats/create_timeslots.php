@@ -3,6 +3,19 @@
 
 include('../../config/connect.php');
 
+$questions = array();
+
+if(isset($_GET['learn'])){
+  array_push($questions, $_GET['learn']);
+}
+if(isset($_GET['industry'])){
+  array_push($questions, $_GET['industry']);
+}
+if(isset($_GET['offices'])){
+  array_push($questions, $_GET['offices']);
+}
+
+$questions_string = implode(',', $questions);
   // Retrieve data from Query String
 $thisSchool = $_GET['school'];
 $newDate = $_GET['newDate'];
@@ -25,7 +38,7 @@ while($schoolRow = mysql_fetch_array($schoolResult)){
 }
 
     //insert new date into the database
-$datesQuery = 'INSERT INTO  `'.$database.'`.`EventDate` (eventdate, school, status) VALUES ("' .$newDate. '", ' .$thisSchool. ', "0");';
+$datesQuery = 'INSERT INTO  `'.$database.'`.`EventDate` (eventdate, school, status, questions) VALUES ("' .$newDate. '", ' .$thisSchool. ', "0", "'.$questions_string.'");';
 mysql_query($datesQuery);
 
 //echo "<p>Dates:" . $datesQuery;

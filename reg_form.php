@@ -40,15 +40,28 @@ $(document).ready(function(){
   <tr>
     <td class="table_label">Coffee Chat Date</td>
     <td><?php	 	 		 		 	 	 		 		 		 		 		 	 
-$datesQuery = 'SELECT id, eventdate FROM `'.$database.'`.`EventDate` WHERE school = '.$thisSchool.' AND status = 0 ORDER BY eventdate;';
+$datesQuery = 'SELECT id, eventdate, questions FROM `'.$database.'`.`EventDate` WHERE school = '.$thisSchool.' AND status = 0 ORDER BY eventdate;';
 $datesResult = mysql_query($datesQuery);
 
 echo "<select name='date' id='date' onchange='ajaxTime()'>";
 while($datesRow = mysql_fetch_array($datesResult)){
     echo "<option name='".$datesRow['eventdate']."' value='".$datesRow['id']."'>" .$datesRow['eventdate']. "</option>";    
+    $questions = explode(',', $datesRow['questions']);
 }
 
 echo "</select>";
+
+
+  if(in_array('industry', $questions)){
+    $industry = true;
+  }
+  if(in_array('learn', $questions)){
+    $learn = true;
+  }
+  if(in_array('offices', $questions)){
+    $offices = true;
+  }
+
 
 ?></td>
   </tr>
@@ -73,14 +86,19 @@ echo "</select>";
     <td class="table_label">Phone</td>
     <td><input class="cf_inputbox required" maxlength="150" size="30" title="" id="text_10" name="phone" type="text" /></td>
   </tr>
+  <?php if($industry==true): ?>
   <tr>
     <td class="table_label">What industry did you work in prior to MBA?</td>
     <td><textarea class="cf_inputbox" rows="3" id="text_12" title="" cols="30" name="question1"></textarea></td>
   </tr>
+<?php endif; ?>
+<?php if($learn==true): ?>
   <tr>
     <td class="table_label">What would you like to learn about A.T. Kearney?</td>
     <td><textarea class="cf_inputbox" rows="3" id="text_12" title="" cols="30" name="question2"></textarea></td>
   </tr>
+<?php endif; ?>
+<?php if($offices==true): ?>
   <tr>
     <td class="table_label">Which A.T. Kearney office(s) are you interested in learning more about? </td>
     <td><label class="cf_label" text-align="right" style="width: 250px;"></label>
@@ -129,7 +147,7 @@ echo "</select>";
 				<option value="International">International</option>
     </select></td>
   </tr>
-
+<?php endif; ?>
 
  <tr>
     <td></td>

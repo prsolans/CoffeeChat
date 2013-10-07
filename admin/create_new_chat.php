@@ -7,6 +7,16 @@
 
 <input type='hidden' name='school' value='<?php echo $schoolID; ?>' />
 <br/>Add new date: <input type="text" name="newDate" /><br/>
+Questions:   <label class="checkbox">
+      <input type="checkbox" name="industry" checked="checked" value="industry"> Industry
+    </label>
+      <label class="checkbox">
+      <input type="checkbox" name="learn" checked="checked" value="learn"> Learn
+    </label>
+      <label class="checkbox">
+      <input type="checkbox" name="offices" checked="checked" value="offices"> Offices
+    </label>
+<br/>
 Time increments: <select name='increment'>
 <option value='15'>15 minutes</option>
 <option value='20'>20 minutes</option>
