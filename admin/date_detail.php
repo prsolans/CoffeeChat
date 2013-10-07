@@ -32,13 +32,14 @@ while($thisDate = mysql_fetch_array($dateResult)){
 }
 ?>
 <div class='row'>
-  <div class='span4'>
+  <div class='span3'>
     <?php include('timeslot_picker.php'); ?>
   </div> 
-  <div class='span4'>
+  <div class='span6'>
     <?php include('slots_available.php'); ?>
   </div>
- <div class='span4'>
+ <div class='span3'>
+    <?php include('questions.php'); ?>
     <?php	include('current_signups.php'); ?>
     <?php	include('delete_student.php'); ?>
  </div>

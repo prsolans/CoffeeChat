@@ -39,7 +39,7 @@ echo "</select>";
 ?>
 </td></tr>
 <tr><td>
-<input type="submit" value="DELETE" />
+<input type="submit" class='btn btn-danger' value="DELETE" />
 </form>
 </td></tr>
 </table>
