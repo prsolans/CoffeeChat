@@ -2,6 +2,8 @@
 
 include('config/connect.php');
 
+$choice1 = $choice2 = $choice3 = $question1 = $question2 = '';
+
 $school = $_GET['school'];
 $dateID = $_GET['date'];
 $timeID = $_GET["time"];
@@ -12,13 +14,26 @@ $lastName = $_GET["last_name"];
 $email = $_GET["email"];
 $phone = $_GET["phone"];
 
+if(isset($_GET["1st_choice"])){
 $choice1 = $_GET["1st_choice"];
+$choice1 = mysql_real_escape_string($choice1);
+}
+if(isset($_GET["2nd_choice"])){
 $choice2 = $_GET["2nd_choice"];
+$choice2 = mysql_real_escape_string($choice2);
+}
+if(isset($_GET["3rd_choice"])){
 $choice3 = $_GET["3rd_choice"];
-
+$choice3 = mysql_real_escape_string($choice3);
+}
+if(isset($_GET["question1"])){
 $question1 = $_GET["question1"];
+$question1 = mysql_real_escape_string($question1);
+}
+if(isset($_GET["question2"])){
 $question2 = $_GET["question2"];
-
+$question2 = mysql_real_escape_string($question2);
+}
 
 // Escape User Input to help prevent SQL Injection
 
@@ -32,12 +47,7 @@ $question2 = $_GET["question2"];
 	$email = mysql_real_escape_string($email);
 	$phone = mysql_real_escape_string($phone);
 	
-	$choice1 = mysql_real_escape_string($choice1);
-	$choice2 = mysql_real_escape_string($choice2);
-	$choice3 = mysql_real_escape_string($choice3);
 	
-	$question1 = mysql_real_escape_string($question1);
-	$question2 = mysql_real_escape_string($question2);
 
 // GET SCHOOL DETAILS
 	$schoolquery = "SELECT * FROM `".$database."`.`School` WHERE id=$school";

@@ -34,7 +34,7 @@ while ($registrantRow = mysql_fetch_array($registrantResult)){
 }
 
 
-echo "<tr><td colspan='2'><a href='registrants.php?school=".$thisSchool."&amp;date=".$thisDate."'>See full registration details</a></td></tr>";
+echo "<tr><td colspan='2'><a href='registrants.php?school=".$thisSchool."&amp;date=".$selectedDate."'>See full registration details</a></td></tr>";
 echo "</table>";
 
 ?>
