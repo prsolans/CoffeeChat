@@ -1,10 +1,13 @@
 <?php	 	 		 		 	 	 		 		 		 		 		 	
 
+$timeQuery = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("8:00 - 8:30", 0, 0, ' .$thisDateID.', 1);';
+mysql_query($timeQuery);
+
 $timeQuery0 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("8:30 - 9:00", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery0);
 
-$timeQuery = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("9:00 - 9:30", 0, 0, ' .$thisDateID.', 1);';
-mysql_query($timeQuery);
+$timeQuery1 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("9:00 - 9:30", 0, 0, ' .$thisDateID.', 1);';
+mysql_query($timeQuery1);
 
 $timeQuery2 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("9:30 - 10:00", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery2);
