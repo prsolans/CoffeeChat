@@ -60,5 +60,17 @@ mysql_query($timeQuery17);
 $timeQuery18 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("5:30 - 6:00", 0, 0, ' .$thisDateID.', 1);';
 mysql_query($timeQuery18);
 
+$timeQuery19 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("6:00 - 6:30", 0, 0, ' .$thisDateID.', 1);';
+mysql_query($timeQuery19);
+
+$timeQuery20 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("6:30 - 7:00", 0, 0, ' .$thisDateID.', 1);';
+mysql_query($timeQuery20);
+
+$timeQuery21 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("7:00 - 7:30", 0, 0, ' .$thisDateID.', 1);';
+mysql_query($timeQuery21);
+
+$timeQuery22 = 'INSERT INTO  `'.$database.'`.`'.$theseTimes.'` (slot_time, slots_total, slots_filled, date, status) VALUES ("7:30 - 8:00", 0, 0, ' .$thisDateID.', 1);';
+mysql_query($timeQuery22);
+
 header("Location: ".$baseurl."/admin/date_detail.php?date=".$thisDateID."&school=".$thisSchool."");
 ?>
